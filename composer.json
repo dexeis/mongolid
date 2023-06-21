@@ -1,7 +1,7 @@
 {
-    "name": "leroy-merlin-br/mongolid",
-    "description": "Easy, powerful and ultrafast ODM for PHP and MongoDB.",
-    "keywords": ["odm", "mongodb", "mongo", "nosql", "active record", "laravel"],
+    "name": "dexeis/mongolid",
+    "description": "mongolid adaptation to php 8.2.",
+    "keywords": ["odm", "mongodb", "mongo", "nosql", "active record"],
     "license": "MIT",
     "authors": [
         {
@@ -15,6 +15,10 @@
         {
             "name": "Boitatá",
             "email": "boitata@leroymerlin.com.br"
+        },
+        {
+            "name": "Coco L'asticot",
+            "email": "coco@lasticot.xyz"
         }
     ],
     "require": {
