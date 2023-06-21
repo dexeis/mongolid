@@ -264,12 +264,14 @@ abstract class AbstractModel implements ModelInterface
         $this->writeConcern = $writeConcern;
     }
 
+    #[\ReturnTypeWillChange]
     public function bsonSerialize()
     {
         return Container::make(ModelMapper::class)
             ->map($this, array_merge($this->fillable, $this->guarded), $this->dynamic, $this->timestamps);
     }
 
+    #[\ReturnTypeWillChange]
     public function bsonUnserialize(array $data)
     {
         unset($data['__pclass']);

@@ -18,7 +18,7 @@ use Serializable;
  * 'where'. Because the mongodb library's MongoDB\Cursor is much more
  * limited (in that regard) than the old driver MongoCursor.
  */
-class Cursor implements CursorInterface, Serializable
+class Cursor implements CursorInterface
 {
     /**
      * @var Collection
@@ -159,6 +159,7 @@ class Cursor implements CursorInterface, Serializable
     /**
      * Iterator interface rewind (used in foreach).
      */
+    #[\ReturnTypeWillChange]
     public function rewind()
     {
         try {
@@ -177,6 +178,7 @@ class Cursor implements CursorInterface, Serializable
      *
      * @return mixed
      */
+    #[\ReturnTypeWillChange]
     public function current()
     {
         $cursor = $this->getCursor();
@@ -211,6 +213,7 @@ class Cursor implements CursorInterface, Serializable
      *
      * @return int
      */
+    #[\ReturnTypeWillChange]
     public function key()
     {
         return $this->position;
@@ -219,6 +222,7 @@ class Cursor implements CursorInterface, Serializable
     /**
      * Iterator next method (used in foreach).
      */
+    #[\ReturnTypeWillChange]
     public function next()
     {
         ++$this->position;
@@ -273,7 +277,7 @@ class Cursor implements CursorInterface, Serializable
         $properties['collection'] = $this->collection->getCollectionName();
         unset($properties['cursor']);
 
-        return serialize($properties);
+        return __serialize($properties);
     }
 
     /**
@@ -283,7 +287,7 @@ class Cursor implements CursorInterface, Serializable
      */
     public function unserialize($serialized)
     {
-        $attributes = unserialize($serialized);
+        $attributes = __unserialize($serialized);
 
         $connection = Container::make(Connection::class);
         $db = $connection->defaultDatabase;
